@@ -1,19 +1,43 @@
 class Spaceship extends Floater  
 {   
 	public Spaceship() {
-		//myCenterX = myCenterY = 300;
+		myCenterX = myCenterY = 300;
 		corners = 3;
 		xCorners = new int[corners];
 		yCorners = new int[corners];
-		xCorners[0] = (int)myCenterX + 10;
-		yCorners[0] = (int)myCenterY;
-		xCorners[1] = (int)myCenterX - 15;
-		yCorners[1] = (int)myCenterY + 10;
-		xCorners[2] = (int)myCenterX - 15;
-		yCorners[2] = (int)myCenterY - 10;
+		xCorners[0] = 10;
+		yCorners[0] = 0;
+		xCorners[1] = -15;
+		yCorners[1] = 8;
+		xCorners[2] = -15;
+		yCorners[2] = -8;
 		myColor = color(250, 150, 250);
-		myDirectionX = 5;// left / right
-		myDirectionY = 5; // up / down
-		myPointDirection = 0; // spaaceship angle
+		myDirectionX = 0;// left / right
+		myDirectionY = 0; // up / down
+		myPointDirection = 0; // spaceship angle
 	}
+	public void setDirectionX(int x) {
+		myDirectionX = x;
+	}
+	public void setDirectionY(int y) {
+		myDirectionY = y;
+	}
+	public void setPointDirection(int z) {
+		myPointDirection = z;
+	}
+	public void setCenterX(int x) {
+		myCenterX = x;
+	}
+	public void setCenterY(int y) {
+		myCenterY = y;
+	}
+	/*public void getCenterX() {
+		return myCenterX;
+	}
+	public void getCenterY() {
+		return myCenterY;
+	}
+	public void getPointDirection() {
+		return myPointDirection;
+	}*/
 }
