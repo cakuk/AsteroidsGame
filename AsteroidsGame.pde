@@ -43,6 +43,9 @@ public void keyPressed() {
 		one.setPointDirection((int)(Math.random() * 360));
 	}
 }
-//public void mousePressed() {
-	//ellipse(one.getCenterX(), one.getCenterY(), 5, 5);
-//
+public void mousePressed() {
+	if(mousePressed == true) {
+		fill(255, 0, 0);
+		ellipse((int)one.getCenterX() + 10, (int)one.getCenterY(), 5, 5);
+	}
+}
