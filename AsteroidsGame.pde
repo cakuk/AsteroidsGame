@@ -65,10 +65,10 @@ public void keyPressed() {
 		one.setPointDirection((int)(Math.random() * 360));
 	}
 	//press space bar
-	if(keyCode == 32) {
+	/*if(keyCode == 32) {
 		ArrayList <Asteroid> b = new ArrayList <Asteroid>();
 		for(int i = 0; i < length; i = i + 1) { 
 			b.add(new Asteroid());
 		}
-	}
+	}*/
 }
