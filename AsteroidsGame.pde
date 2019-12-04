@@ -1,8 +1,8 @@
 Spaceship one = new Spaceship();
 Star[] dots = new Star[300];
 ArrayList <Asteroid> b = new ArrayList <Asteroid>();
-int length = 25;
-//ArrayList <Bullet> a = new ArrayList <Bullet>();
+ArrayList <Bullet> c = new ArrayList <Bullet>(one);
+int length = 35;
 
 public void setup() 
 {
@@ -38,15 +38,17 @@ public void draw()
 			length = length - 1;
 		}
 	}
+	c.show();
+	c.move();
 }
 public void keyPressed() {
 	// press 'w'
 	if(keyCode == 87) {
-		one.turn(1);
+		one.turn(5);
 	}
 	// press 's'
 	if(keyCode == 83) {
-		one.turn(-1);
+		one.turn(-5);
 	}
 	//press 'd'
 	if(keyCode == 68) {
