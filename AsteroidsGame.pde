@@ -1,8 +1,8 @@
 Spaceship one = new Spaceship();
 Star[] dots = new Star[300];
 ArrayList <Asteroid> b = new ArrayList <Asteroid>();
-ArrayList <Bullet> c = new ArrayList <Bullet>(one);
-int length = 35;
+ArrayList <Bullet> c = new ArrayList <Bullet>();
+int length = 30;
 
 public void setup() 
 {
@@ -32,14 +32,26 @@ public void draw()
 	one.move();
 	one.show();
 	for(int i = 0; i < length; i = i + 1) { 
+
+		//fix dist & bullet angles
+
+
+
 		if(dist((float)one.getCenterX(), (float)one.getCenterY(), (float)b.get(i).getCenterX(), (float)b.get(i).getCenterY()) < 20) {
 			b.remove(i);
 			i = i - 1;
 			length = length - 1;
 		}
 	}
-	c.show();
-	c.move();
+	for(int i = 0; i < c.size(); i = i + 1) {
+		c.get(i).show();
+		c.get(i).move();
+		System.out.println(c.size());
+		if(dist((float)c.get(i).getCenterX(), (float)c.get(i).getCenterY(), (float)b.get(i).getCenterX(), (float)b.get(i).getCenterY()) < 20) {
+			c.remove(i);
+			i = i - 1; // also remove the asteroid
+		}
+	}
 }
 public void keyPressed() {
 	// press 'w'
@@ -66,11 +78,7 @@ public void keyPressed() {
 		one.setDirectionY(0);
 		one.setPointDirection((int)(Math.random() * 360));
 	}
-	//press space bar
-	/*if(keyCode == 32) {
-		ArrayList <Asteroid> b = new ArrayList <Asteroid>();
-		for(int i = 0; i < length; i = i + 1) { 
-			b.add(new Asteroid());
-		}
-	}*/
+	if(keyCode == 32) {
+		c.add(new Bullet(one));
+	}
 }
