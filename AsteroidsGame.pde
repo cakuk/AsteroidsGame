@@ -2,8 +2,7 @@ Spaceship one = new Spaceship();
 Star[] dots = new Star[300];
 ArrayList <Asteroid> b = new ArrayList <Asteroid>();
 ArrayList <Bullet> c = new ArrayList <Bullet>();
-int length = 50;
-boolean spin = false;
+int length = 40;
 
 public void setup() 
 {
@@ -27,28 +26,32 @@ public void draw()
 		fill(100, 100, 100, 50);
 		b.get(i).move();
 		b.get(i).show();
-		if(dist((float)one.getCenterX(), (float)one.getCenterY(), (float)b.get(i).getCenterX(), (float)b.get(i).getCenterY()) < 20) {
-			b.remove(i);
-			i = i - 1;
-			length = length - 1;
-		}
 	}
 	noStroke();
 	fill(250, 150, 250);
 	one.move();
 	one.show();
 	for(int i = 0; i < c.size(); i = i + 1) {
+		c.get(i).setDirectionX((int)one.getDirectionX());
+		c.get(i).setDirectionY((int)one.getDirectionY());
+		c.get(i).setPointDirection((int)one.getPointDirection());
 		c.get(i).show();
 		c.get(i).move();
-		if(spin == true) {
-			c.get(i).turn(5);
-		}
-		if(dist((float)b.get(i).getCenterX(), (float)b.get(i).getCenterY(), (float)c.get(i).getCenterX(), (float)c.get(i).getCenterY()) < 30) {
-			c.remove(i);
+	}
+	for(int i = 0; i < length; i = i + 1) {
+		if(dist((float)b.get(i).getCenterX(), (float)b.get(i).getCenterY(), (float)one.getCenterX(), (float)one.getCenterY()) < 20) {
 			b.remove(i);
 			i = i - 1;
 			length = length - 1;
-
+		}
+		for(int j = 0; j < c.size(); j = j + 1) {
+			if(dist((float)b.get(i).getCenterX(), (float)b.get(i).getCenterY(), (float)c.get(j).getCenterX(), (float)c.get(j).getCenterY()) < 20) {
+				b.remove(i);
+				c.remove(j);
+				i = i - 1;
+				j = j + 1;
+				length = length - 1;
+			}
 		}
 	}
 }
@@ -56,12 +59,10 @@ public void keyPressed() {
 	// press 'w'
 	if(keyCode == 87) {
 		one.turn(5);
-		spin = true;
 	}
 	// press 's'
 	if(keyCode == 83) {
 		one.turn(-5);
-		spin = true;
 	}
 	//press 'd'
 	if(keyCode == 68) {
