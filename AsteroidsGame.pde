@@ -32,11 +32,8 @@ public void draw()
 	one.move();
 	one.show();
 	for(int i = 0; i < c.size(); i = i + 1) {
-		c.get(i).setDirectionX((int)one.getDirectionX());
-		c.get(i).setDirectionY((int)one.getDirectionY());
-		c.get(i).setPointDirection((int)one.getPointDirection());
-		c.get(i).show();
 		c.get(i).move();
+		c.get(i).show();
 	}
 	for(int i = 0; i < length; i = i + 1) {
 		if(dist((float)b.get(i).getCenterX(), (float)b.get(i).getCenterY(), (float)one.getCenterX(), (float)one.getCenterY()) < 20) {
